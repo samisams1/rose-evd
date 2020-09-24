@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-var Pin = require('../models/pinList');
+var Pin = require('../models/PinList');
 
 router.get('/', (req, res, next) => {
 	return res.render('index.ejs');
