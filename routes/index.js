@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Pin = require('../models/pinList');
 
 router.get('/', (req, res, next) => {
 	return res.render('index.ejs');
@@ -94,6 +95,20 @@ router.get('/profile', (req, res, next) => {
 		}
 	});
 });
+router.get('/pin', (req, res, next) => {
+	console.log("pin");
+	Pin.findOne({ unique_id:3 }, (err, data) => {
+		console.log("data");
+		console.log(data);
+		if (!data) {
+			res.redirect('/');
+		} else {
+			//console.log("found");
+			return res.render('data.ejs', { "name": data.value, "email": data.status });
+		}
+	});
+});
+
 
 router.get('/logout', (req, res, next) => {
 	console.log("logout")
