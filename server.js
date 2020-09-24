@@ -50,14 +50,10 @@ app.use((err, req, res, next) => {
 
 
 // listen on port 3000
-/*app.listen(3000, () => {
+app.listen(3000, () => {
   console.log('Express app listening on port 3000');
 });
 
-*/
 
 
-const PORT = env.process.PORT | 3000;
-app.listen(PORT, () => {
-  console.log('Express app listening on port 3000');
-});
+
