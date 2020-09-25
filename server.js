@@ -7,7 +7,9 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
-mongoose.connect('mongodb://localhost/RoseantEvd');
+const url = process.env.MONGO_URL || 'mongodb://localhost/RoseantEvd';
+
+mongoose.connect(url,{useNewUrlParser : true,useUnifiedTopology:true});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -49,11 +51,13 @@ app.use((err, req, res, next) => {
 });
 
 
-// listen on port 3000
+/* listen on port 3000
 app.listen(3000, () => {
   console.log('Express app listening on port 3000');
 });
 
-
-
-
+*/
+const PORT = process.env.PORT | 3000;
+app.listen(PORT, () => {
+  console.log('Express app listening on port 3000');
+});
